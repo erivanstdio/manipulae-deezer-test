@@ -14,6 +14,10 @@ const Routes = () => (
 			</Route>
 
 			<Route exact path='/favorites'></Route>
+
+            <Route exact path='*'>
+                <h1>404</h1>
+            </Route>
 		</Switch>
 	</BrowserRouter>
 );
