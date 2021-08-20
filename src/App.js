@@ -1,12 +1,13 @@
 import GlobalStyles from './styles/Global';
 
+import Routes from './routes';
+
 const App = () => {
 	return (
-		<div>
+		<>
 			<GlobalStyles />
-
-			<h1>App</h1>
-		</div>
+			<Routes />
+		</>
 	);
 };
 
