@@ -8,7 +8,9 @@ const Track = ({ data, playingId, handlePlay }) => {
 			<TrackInfo>
 				<Cover src={data?.album?.cover} />
 				<div className='meta'>
-					<p>{data?.title}</p>
+					<a href={data?.link} target='_blank' rel='noreferrer'>
+						{data?.title_short}
+					</a>
 					<span>{data?.artist?.name}</span>
 				</div>
 			</TrackInfo>

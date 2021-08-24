@@ -10,3 +10,7 @@ export const Container = styled.div`
 export const List = styled.ul`
     width: 500px;
 `;
+
+export const Player = styled.audio`
+    display: none;
+`;

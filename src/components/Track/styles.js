@@ -21,11 +21,17 @@ export const TrackInfo = styled.div`
 		display: flex;
 		flex-direction: column;
 
-		& > p {
+		& > a {
 			font-size: 17px;
 			font-weight: 500;
 			margin-bottom: 2px;
 			color: #fff;
+            cursor: pointer;
+            text-decoration: none;
+
+            &:hover {
+                color: #0af;
+            }
 		}
 
 		& > span {
@@ -38,16 +44,16 @@ export const TrackInfo = styled.div`
 `;
 
 export const Cover = styled.img`
-	width: 48px;
-	height: 48px;
+	width: 48px !important;
+	height: 48px !important;
 	border-radius: 2px;
 	object-fit: cover;
 	margin-right: 8px;
 `;
 
 export const PlayPauseButton = styled.button`
-	width: 48px;
-	height: 48px;
+	width: 48px !important;
+	height: 48px !important;
 	border-radius: 50%;
 	display: flex;
 	align-items: center;
