@@ -26,7 +26,7 @@ const TracksList = () => {
 				const { data } = await axios.get(`http://localhost:3333`, { headers });
 
 				const tracks = search ? data : data?.tracks;
-
+console.log(tracks);
 				dispatch(clearList());
 				dispatch(addTracksToList(tracks?.data));
 				setFallback((prev) => ({ ...prev, fetchingTracks: false }));

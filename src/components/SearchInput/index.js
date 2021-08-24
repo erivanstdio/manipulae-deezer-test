@@ -20,7 +20,6 @@ const SearchInput = () => {
 
 	return (
 		<Container onSubmit={onSubmit}>
-			<h1>{search}</h1>
 			<Input
 				placeholder='Pesquisar'
 				value={search}
