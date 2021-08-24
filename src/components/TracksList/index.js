@@ -5,8 +5,10 @@ import { useSelector } from 'react-redux';
 import Track from '../Track';
 import { Container, List, Player } from './styles';
 
-const TracksList = () => {
-	const tracks = useSelector((state) => state?.tracks?.list);
+const TracksList = ({ getFromFavorites = false }) => {
+	const tracks = useSelector((state) =>
+		getFromFavorites ? state?.tracks?.favorites : state?.tracks?.list
+	);
 
 	const playerRef = useRef(null);
 	const [player, setPlayer] = useState(null);
