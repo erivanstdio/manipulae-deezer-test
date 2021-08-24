@@ -26,18 +26,18 @@ export const TrackInfo = styled.div`
 			font-weight: 500;
 			margin-bottom: 2px;
 			color: #fff;
-            cursor: pointer;
-            text-decoration: none;
+			cursor: pointer;
+			text-decoration: none;
 
-            &:hover {
-                color: #0af;
-            }
+			&:hover {
+				color: #0af;
+			}
 		}
 
 		& > span {
 			font-size: 14px;
 			color: #fff;
-            font-weight: 400;
+			font-weight: 400;
 			opacity: 0.7;
 		}
 	}
@@ -49,6 +49,30 @@ export const Cover = styled.img`
 	border-radius: 2px;
 	object-fit: cover;
 	margin-right: 8px;
+`;
+
+export const Actions = styled.div`
+	display: flex;
+	align-items: center;
+`;
+
+export const FavButton = styled.button`
+	border: none;
+	background: none;
+	outline: none;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 8px;
+
+	& > svg {
+		font-size: 19px;
+		color: ${({ isFavorited }) => (isFavorited ? '#e21e1e' : '#8e8e8e')};
+	}
 `;
 
 export const PlayPauseButton = styled.button`
@@ -66,4 +90,11 @@ export const PlayPauseButton = styled.button`
 		font-size: 17px;
 		color: ${({ isPlaying }) => (isPlaying ? '#0af' : '#FFF')};
 	}
+`;
+
+export const Duration = styled.span`
+    font-size: 13px;
+    color: #FFF;
+    opacity: .6;
+    margin-right: 16px;
 `;
