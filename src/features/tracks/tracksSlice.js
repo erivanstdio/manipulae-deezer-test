@@ -16,9 +16,13 @@ export const tracksSlice = createSlice({
 		addTrackToFavorites: (state, action) => {
 			state.favorites = [...state.favorites, action.payload];
 		},
+		removeTrackFromFavorites: (state, action) => {
+			state.favorites = state.favorites.filter((track) => track.id !== action.payload.id);
+		},
 	},
 });
 
-export const { addTracksToList, addTrackToFavorites, clearList } = tracksSlice.actions;
+export const { addTracksToList, addTrackToFavorites, removeTrackFromFavorites, clearList } =
+	tracksSlice.actions;
 
 export default tracksSlice.reducer;
