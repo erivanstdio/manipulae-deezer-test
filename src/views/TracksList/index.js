@@ -2,29 +2,36 @@ import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import querystring from 'query-string';
 import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-import api from '../../services/api';
+import { addTracksToList } from '../../features/tracks/tracksSlice';
+
+import List from '../../components/TracksList';
 import { Container } from './styles';
 
-const Auth = () => {
-	const [fallback, setFallback] = useState({ fetchingTracks: true });
-	const [tracks, setTracks] = useState([]);
+const TracksList = () => {
+	const dispatch = useDispatch();
+
 	const { hash } = useLocation();
+	const [fallback, setFallback] = useState({ fetchingTracks: true });
 
-	const fetchTracks = useCallback(async (token) => {
-		try {
-			const endpoint = 'chart/tracks';
-			// const endpoint = 'search?q=artist:"metallica"';
-			const {
-				data: { tracks },
-			} = await axios.get(`http://localhost:3333?e=${endpoint}&token=${token}`);
+	const fetchTracks = useCallback(
+		async (token) => {
+			try {
+				const endpoint = 'chart/tracks';
+				// const endpoint = 'search?q=artist:"metallica"';
+				const {
+					data: { tracks },
+				} = await axios.get(`http://localhost:3333?e=${endpoint}&token=${token}`);
 
-			setTracks(tracks.data);
-			setFallback((prev) => ({ ...prev, fetchingTracks: false }));
-		} catch (error) {
-			console.error(error);
-		}
-	}, []);
+				dispatch(addTracksToList(tracks?.data));
+				setFallback((prev) => ({ ...prev, fetchingTracks: false }));
+			} catch (error) {
+				console.error(error);
+			}
+		},
+		[dispatch]
+	);
 
 	useEffect(() => {
 		const search = hash.replace('#', '?');
@@ -39,16 +46,9 @@ const Auth = () => {
 
 	return (
 		<Container>
-			<ul>
-				{tracks.map((track) => (
-					<li key={track?.id}>
-						<span>{track?.title}</span>
-						<audio src={track?.preview} controls />
-					</li>
-				))}
-			</ul>
+			<List />
 		</Container>
 	);
 };
 
-export default Auth;
+export default TracksList;
