@@ -1,13 +1,15 @@
 import { useCallback, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { change } from '../../features/search/searchSlice';
 
 import { Container, Input } from './styles';
 
 const SearchInput = () => {
+	const { value } = useSelector((state) => state?.search);
+
 	const dispatch = useDispatch();
-	const [search, setSearch] = useState('');
+	const [search, setSearch] = useState(() => value || '');
 
 	const onSubmit = useCallback(
 		(event) => {
