@@ -1,12 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const counterSlice = createSlice({
+export const tracksSlice = createSlice({
 	name: 'tracks',
 	initialState: {
 		list: [],
 		favorites: [],
 	},
 	reducers: {
+		clearList: (state) => {
+			state.list = [];
+		},
 		addTracksToList: (state, action) => {
 			state.list = [...state.list, ...action.payload];
 		},
@@ -16,6 +19,6 @@ export const counterSlice = createSlice({
 	},
 });
 
-export const { addTracksToList, addTrackToFavorites } = counterSlice.actions;
+export const { addTracksToList, addTrackToFavorites, clearList } = tracksSlice.actions;
 
-export default counterSlice.reducer;
+export default tracksSlice.reducer;

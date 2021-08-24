@@ -8,12 +8,12 @@ app.use(cors());
 
 app.get('/', async (req, res) => {
 	try {
-		const { e, q = '', token } = req.query;
+		const { search, token } = req.headers;
+
 		const apiUrl = 'https://api.deezer.com';
-
-		const URI = `${apiUrl}/${e}?access_token=${token}`;
-
-        console.log(URI);
+		const URI = search
+			? `${apiUrl}/search?q=artist:"${search}"&access_token=${token}`
+			: `${apiUrl}/chart/tracks`;
 
 		const { data } = await axios.default.get(URI);
 

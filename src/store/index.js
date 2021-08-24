@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 
+import searchReducer from '../features/search/searchSlice';
 import tracksReducer from '../features/tracks/tracksSlice';
-import counterReducer from '../features/counter/counterSlice';
 
 export default configureStore({
 	reducer: {
-		counter: counterReducer,
 		tracks: tracksReducer,
+		search: searchReducer,
 	},
 });
