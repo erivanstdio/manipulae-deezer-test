@@ -1,14 +1,15 @@
 import { useCallback, useEffect, useState } from 'react';
-import axios from 'axios';
-import querystring from 'query-string';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import querystring from 'query-string';
 
 import { addTracksToList, clearList } from '../../features/tracks/tracksSlice';
 
 import List from '../../components/TracksList';
 import SearchInput from '../../components/SearchInput';
 import { Container, Fallback } from './styles';
+
+import api from '../../services/api';
 
 const TracksList = () => {
 	const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const TracksList = () => {
 				setFallback((prev) => ({ ...prev, fetchingTracks: true }));
 
 				const headers = { token, search };
-				const { data } = await axios.get(`http://localhost:3333`, { headers });
+				const { data } = await api.be.get('/', { headers });
 
 				const tracks = search ? data : data?.tracks;
 
